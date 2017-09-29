@@ -8,7 +8,7 @@ defmodule VesselTest do
 
   test "fill" do
     pid = Vessel.start_link()
-    result = Vessel.fill(pid)
+    Vessel.fill(pid)
     assert :full == Vessel.state(pid)
   end
 
@@ -21,7 +21,7 @@ defmodule VesselTest do
     pid = Vessel.start_link()
     add_quantity = 1000
     result = Vessel.pour(pid, add_quantity)
-    assert result = %Vessel{amount_in_cc: add_quantity}
+    assert result == %Vessel{amount_in_cc: add_quantity}
     assert :full == Vessel.state(pid)
   end
   
@@ -29,7 +29,7 @@ defmodule VesselTest do
     pid = Vessel.start_link()
     add_quantity = 10
     result = Vessel.pour(pid, add_quantity)
-    assert result = %Vessel{amount_in_cc: add_quantity}
+    assert result == %Vessel{amount_in_cc: add_quantity}
     assert :half_full == Vessel.state(pid)
   end
 
